@@ -1,3 +1,7 @@
+Bt
+D
+C
+<<<<<<< HEAD
 # Descartes MVC
 Descartes est un système MVC pour PHP volontairement simple et minimaliste.
 
@@ -15,3 +19,6 @@ Le système tire sont nom du philosophe Français René Descartes, en hommage à
 Il n'existe pas encore de documentation pour Descartes, cependant vous pouvez en grande partie vous reporter à la documentation de notre projet RaspiSMS (http://raspisms.raspbian-france.fr) en attendant que nous ayons réalisé une documentation pour Descartes.
 
 Cette courante absence de documentation ne devrait pas vous effrayer, Descartes devrait pouvoir être compris dans sa casi entièreté en 2 jours, par simple lecture du code du répertoire "mvc" et du fichier "index.php".
+=======
+# httpstatus
+>>>>>>> ef3f8c2f4582d40cd22fefc2c1ae127c73539ee9
