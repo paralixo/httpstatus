@@ -10,7 +10,7 @@ class Index extends \Controller
 	{
 		return $this->render("index/home");
 	}
-
+   
     /**
      * Page showing values, with some optionnal
      * @param string $first_value : First value to show

@@ -3,7 +3,6 @@
     $routes = array(
 		'Index' => [
 			'home' => '/',
-			'home' => '/show-value',
         ],
     );
 
