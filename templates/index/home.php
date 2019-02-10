@@ -1,5 +1,5 @@
 <?php \controllers\internals\Incs::head('It Works !'); ?>
-    <h1>It works !</h1>
+    <h1>It works !</h1><?= $url ?>
 	<p>This is a page without arguments.</p>
 	<p>You can see a page with arguments, required and optionnal : </p>
 	<ul>

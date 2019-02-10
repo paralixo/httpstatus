@@ -1,10 +1,11 @@
-CREATE DATABASE IF NOT EXISTS httpstatus;
-USE httpstatus;
+CREATE DATABASE IF NOT EXISTS lafuente_mehaye;
+USE lafuente_mehaye;
 
 CREATE TABLE user (
 	id int primary key not null auto_increment,
 	email varchar(255) not null,
 	password varchar(255) not null,
+	is_admin boolean not null,
 	api_key varchar(255) not null
 );
 
