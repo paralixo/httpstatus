@@ -10,6 +10,11 @@ class Index extends \Controller
 	{
 		return $this->render("index/home");
 	}
+
+	public function home2()
+	{
+		return $this->render("index/home");
+	}
    
     /**
      * Page showing values, with some optionnal

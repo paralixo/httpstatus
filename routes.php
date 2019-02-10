@@ -3,6 +3,7 @@
     $routes = array(
 		'Index' => [
 			'home' => '/',
+			'home2' => '/bison'
         ],
     );
 
