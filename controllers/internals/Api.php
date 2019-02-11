@@ -2,12 +2,27 @@
 namespace controllers\internals;
 
 use \models\Websites as ModelWebsites;
+use \models\Users as ModelUsers;
 
 class Api extends \InternalController
 {
 	public function __construct (\PDO $pdo)
 	{
 		$this->model_websites = new ModelWebsites($pdo);
+		$this->model_users = new ModelUsers($pdo);
+	}
+
+	public function ckeck_api_key (string $api_key)
+	{
+		$user = $this->model_users->get_one_by_api_key($api_key);
+		$is_api_valid = empty($user) ? false : true;
+
+		if (!$is_api_valid)
+		{
+			return $this->render("index/noapikey");
+		}
+
+		return $is_api_valid;
 	}
 
 	public function home (int $id)

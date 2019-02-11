@@ -1,7 +1,7 @@
 CREATE DATABASE IF NOT EXISTS lafuente_mehaye;
 USE lafuente_mehaye;
 
-CREATE TABLE user (
+CREATE TABLE users (
 	id int primary key not null auto_increment,
 	email varchar(255) not null,
 	password varchar(255) not null,
@@ -22,3 +22,5 @@ CREATE TABLE history (
 	update_time datetime not null,
 	CONSTRAINT FK_WebsiteHistory FOREIGN KEY (id_website) REFERENCES websites(id)
 );
+
+INSERT INTO users (email, password, is_admin, api_key) VALUES ('deschaussettes@yopmail.com', 'password', true, 'abcdefghjaimelesapis');
