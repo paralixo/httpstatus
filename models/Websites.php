@@ -19,4 +19,9 @@ class Websites extends \Model
 		$id = $this->last_id();
 		return array('success' => $success, 'id' => $id);
 	}
+
+	//public function delete (int $id)
+	//{
+	//	return $this->delete('websites', ['id' => $id]);
+	//}
 }

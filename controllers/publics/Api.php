@@ -42,10 +42,15 @@ class Api extends \Controller
 	{
 		$is_key_valide = $this->internal_api->ckeck_api_key($_GET['api_key']);
 		if (!$is_key_valide) return $is_key_valide;
-		
+
 		$url = $_POST["url"];
 		$add = $this->internal_api->add($url);
 		header('Content-type: application/json');
 		echo json_encode($add);
+	}
+
+	public function delete()
+	{
+		echo 'bison';
 	}
 }
