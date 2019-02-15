@@ -12,8 +12,9 @@ class Api extends \InternalController
 		$this->model_users = new ModelUsers($pdo);
 	}
 
-	public function ckeck_api_key (string $api_key)
+	public function ckeck_api_key ()
 	{
+		$api_key = isset($_GET['api_key']) ? $_GET['api_key'] : '';
 		$user = $this->model_users->get_one_by_api_key($api_key);
 		$is_api_valid = empty($user) ? false : true;
 
@@ -58,5 +59,12 @@ class Api extends \InternalController
 		$add = $this->model_websites->create($url);
 		$add['success'] = $add['success'] == 1 ? true : false;
 		return $add;
+	}
+
+	public function remove (int $id)
+	{
+		$delete = $this->model_websites->remove($id);
+		$delete = $delete == 1 ? true : false;
+		return array('success' => $delete);
 	}
 }

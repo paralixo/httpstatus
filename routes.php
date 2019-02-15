@@ -3,17 +3,16 @@
     $routes = array(
 		'Index' => [
 			'home' => '/',
-			'home2' => '/bison/',
-			'add' => '/add/'
+			'add' => '/add/',
+			'connexion' => '/connexion/'
         ],
         'Api' => [
         	'home' => '/api/',
         	'list' => '/api/list/',
-        	'delete' => '/api/delete/',
+        	'delete' => '/api/delete/{id}/',
         	'status' => '/api/status/',
         	'history' => '/api/history/',
-        	'add' => '/api/add/',
-        	'test' => '/api/bison/'
+        	'add' => '/api/add/'
         ]
     );
 

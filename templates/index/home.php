@@ -1,10 +1,21 @@
 <?php \controllers\internals\Incs::head('It Works !'); ?>
-    <h1>It works !</h1><?= $url ?>
-	<p>This is a page without arguments.</p>
-	<p>You can see a page with arguments, required and optionnal : </p>
-	<ul>
-		<li><a href="<?php $this->s(Router::url('Index', 'show_value', ['first_value' => 'Value1'])); ?>"><?php echo Router::url('Index', 'show_value', ['first_value' => 'Value1']); ?></a></li>
-		<li><a href="<?php $this->s(Router::url('Index', 'show_value', ['first_value' => 'Value1', 'second_value' => '10'])); ?>"><?php echo Router::url('Index', 'show_value', ['first_value' => 'Value1', 'second_value' => '10']); ?></a></li>
-    </ul>
+
+<form method="POST" action="connexion">
+	<input name="email" type="email" id="email" placeholder="Email..." />
+	<input name="password" type="password" id="password" placeholder="password..." />
+	<input type="submit" value="Connexion" />
+</form>
+
+<a href='add/'>Ajouter un site </a>
+
+<?php foreach ($websites as $website) : ?>
+	<div>
+		Site: <?= $website->url ?>
+		<a href='api/delete/<?= $website->id ?>'> Supprimer </a>
+		<a href='api/<?= $website->id ?>'> Modifier </a>
+		<a href='api/history/<?= $website->id ?>'> Historique </a>
+
+	</div>
+<?php endforeach; ?>
 
 <?php \controllers\internals\Incs::footer(); ?>

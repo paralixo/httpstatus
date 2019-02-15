@@ -11,14 +11,13 @@ CREATE TABLE users (
 
 CREATE TABLE websites (
 	id int primary key not null auto_increment,
-	url varchar(255) not null,
-	status boolean not null
+	url varchar(255) not null
 );
 
 CREATE TABLE history (
 	id_history int primary key not null auto_increment,
 	id_website int not null,
-	status boolean not null,
+	status int not null,
 	update_time datetime not null,
 	CONSTRAINT FK_WebsiteHistory FOREIGN KEY (id_website) REFERENCES websites(id)
 );

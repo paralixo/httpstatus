@@ -20,8 +20,8 @@ class Websites extends \Model
 		return array('success' => $success, 'id' => $id);
 	}
 
-	//public function delete (int $id)
-	//{
-	//	return $this->delete('websites', ['id' => $id]);
-	//}
+	public function remove (int $id)
+	{
+		return $this->delete('websites', ['id' => $id]);
+	}
 }

@@ -11,17 +11,8 @@ class Api extends \Controller
 		$this->internal_api = new InternalApi($pdo);
 	}
 
-	public function test()
-	{
-		$url = $this->internal_api->home(1);
-		return $this->render("index/home", ["url" => $url]);
-	}
-
 	public function home()
 	{
-		$is_key_valide = $this->internal_api->ckeck_api_key($_GET['api_key']);
-		if (!$is_key_valide) return $is_key_valide;
-
 		$value = array('version' => 1, 'list' => 'http://localhost/httpstatus/api/list');
 		header('Content-type: application/json');
 		echo json_encode($value);	
@@ -29,9 +20,6 @@ class Api extends \Controller
 
 	public function list()
 	{
-		$is_key_valide = $this->internal_api->ckeck_api_key($_GET['api_key']);
-		if (!$is_key_valide) return $is_key_valide;
-
 		$websites = $this->internal_api->list();
 		$list = array('version' => 1, 'websites' => $websites);
 		header('Content-type: application/json');
@@ -40,7 +28,7 @@ class Api extends \Controller
 
 	public function add()
 	{
-		$is_key_valide = $this->internal_api->ckeck_api_key($_GET['api_key']);
+		$is_key_valide = $this->internal_api->ckeck_api_key();
 		if (!$is_key_valide) return $is_key_valide;
 
 		$url = $_POST["url"];
@@ -49,8 +37,13 @@ class Api extends \Controller
 		echo json_encode($add);
 	}
 
-	public function delete()
+	public function delete(string $id)
 	{
-		echo 'bison';
+		$is_key_valide = $this->internal_api->ckeck_api_key();
+		if (!$is_key_valide) return $is_key_valide;
+
+		$delete = $this->internal_api->remove(intval($id));
+		header('Content-type: application/json');
+		echo json_encode($delete);
 	}
 }
