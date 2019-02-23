@@ -46,4 +46,19 @@ class Api extends \Controller
 		header('Content-type: application/json');
 		echo json_encode($delete);
 	}
+
+	public function status(string $id)
+	{
+		$status = $this->internal_api->status(intval($id));
+		header('Content-type: application/json');
+		echo json_encode($status);
+	}
+
+	public function history(string $id) 
+	{
+		$history = $this->internal_api->history(intval($id));
+		header('Content-type: application/json');
+		echo json_encode($history);
+	}
+
 }

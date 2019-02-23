@@ -1,6 +1,6 @@
 <?php \controllers\internals\Incs::head('It Works !'); ?>
 
-<form method="POST" action="/httpstatus/api/add?api_key=abcdefghjaimelesapis">
+<form method="POST" action="/httpstatus/api/add?api_key=<?= $api_key ?>">
 	<input name="url" type="text" />
 	<input type="submit" />
 </form>

@@ -24,4 +24,14 @@ class Websites extends \Model
 	{
 		return $this->delete('websites', ['id' => $id]);
 	}
+
+	public function status (int $id)
+	{
+		return $this->get_one('history', ['id_website' => $id], 'update_time', true);
+	}
+
+	public function history (int $id)
+	{
+		return $this->get('history', ['id_website' => $id], 'update_time', true);
+	}
 }

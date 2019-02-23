@@ -4,14 +4,15 @@
 		'Index' => [
 			'home' => '/',
 			'add' => '/add/',
-			'connexion' => '/connexion/'
+			'login' => '/login/',
+			'logout' => '/logout/'
         ],
         'Api' => [
         	'home' => '/api/',
         	'list' => '/api/list/',
         	'delete' => '/api/delete/{id}/',
-        	'status' => '/api/status/',
-        	'history' => '/api/history/',
+        	'status' => '/api/status/{id}',
+        	'history' => '/api/history/{id}',
         	'add' => '/api/add/'
         ]
     );

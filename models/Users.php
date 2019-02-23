@@ -7,4 +7,9 @@ class Users extends \Model
 	{
 		return $this->get_one('users', ['api_key' => $api_key]);
 	}
+
+	public function get_one_by_email (string $email, string $password)
+	{
+		return $this->get_one('users', ['email' => $email, 'password' => $password]);
+	}
 }

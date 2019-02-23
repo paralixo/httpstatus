@@ -67,4 +67,35 @@ class Api extends \InternalController
 		$delete = $delete == 1 ? true : false;
 		return array('success' => $delete);
 	}
+
+	public function status (int $id)
+	{
+		$status = $this->model_websites->status($id);
+		$website = $this->model_websites->get_one_by_id($id);
+
+		$output = array();
+		$output['id'] = $website['id'];
+		$output['url'] = $website['url'];
+		$output['status'] = array ('code' => $status['status'], 'at' => $status['update_time']);
+
+		return $output;
+	}
+
+	public function history (int $id)
+	{
+		$history = $this->model_websites->history($id);
+		$website = $this->model_websites->get_one_by_id($id);
+
+		$output = array();
+		$output['id'] = $website['id'];
+		$output['url'] = $website['url'];
+
+		$status = array();
+		foreach ($history as $hist) {
+			array_push($status, ['code' => $hist['status'], 'at' => $hist['update_time']]);
+		}
+
+		$output['status'] = $status;
+		return $output;
+	}
 }

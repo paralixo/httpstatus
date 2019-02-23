@@ -1,20 +1,27 @@
 <?php \controllers\internals\Incs::head('It Works !'); ?>
 
-<form method="POST" action="connexion">
-	<input name="email" type="email" id="email" placeholder="Email..." />
-	<input name="password" type="password" id="password" placeholder="password..." />
-	<input type="submit" value="Connexion" />
-</form>
+<?php if (!$is_log) : ?>
+	<form method="POST" action="login">
+		<input name="email" type="email" id="email" placeholder="Email..." />
+		<input name="password" type="password" id="password" placeholder="password..." />
+		<input type="submit" value="Connexion" />
+	</form>
+<?php endif; ?>
 
-<a href='add/'>Ajouter un site </a>
+<?php if ($is_log) : ?>
+	<a href='logout'>Déconnexion</a>
+	<a href='add/'>Ajouter un site </a>
+<?php endif; ?>
 
 <?php foreach ($websites as $website) : ?>
 	<div>
 		Site: <?= $website->url ?>
-		<a href='api/delete/<?= $website->id ?>'> Supprimer </a>
-		<a href='api/<?= $website->id ?>'> Modifier </a>
-		<a href='api/history/<?= $website->id ?>'> Historique </a>
-
+		Status: <?php if (isset($website->status)) { echo $website->status; } else { echo 'null'; } ?>
+		<?php if ($is_log) : ?>
+			<a href='api/delete/<?= $website->id ?>?api_key=<?= $api_key ?>'> Supprimer </a>
+			<a href='api/modify/<?= $website->id ?>?api_key=<?= $api_key ?>'> Modifier </a>
+			<a href='api/history/<?= $website->id ?>?api_key=<?= $api_key ?>'> Historique </a>
+		<?php endif; ?>
 	</div>
 <?php endforeach; ?>
 

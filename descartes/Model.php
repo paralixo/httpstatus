@@ -217,7 +217,7 @@
                 $params = array_merge($params, $condition['PARAM']);
             }
 
-            $query = "SELECT * FROM " . $table . " WHERE 1 " . (count($wheres) ? 'AND ' : '') . implode('AND ', $wheres);
+            $query = "SELECT * FROM " . $table . " WHERE 1" . (count($wheres) ? ' AND ' : '') . implode(' AND ', $wheres);
 
             if ($order_by !== null)
             {
@@ -237,7 +237,6 @@
                     $query .= ' OFFSET :offset';
                 }
             }
-
 
             $query = $this->pdo->prepare($query);
 
