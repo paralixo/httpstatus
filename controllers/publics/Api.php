@@ -61,4 +61,17 @@ class Api extends \Controller
 		echo json_encode($history);
 	}
 
+	public function update(string $id)
+	{
+		$is_key_valide = $this->internal_api->ckeck_api_key();
+		if (!$is_key_valide) return $is_key_valide;
+
+		$url = isset($_GET['url']) ? $_GET['url'] : null;
+		$id = intval($id);
+
+		$update = $this->internal_api->update($id, $url);
+		header('Content-type: application/json');
+		echo json_encode($update);
+	}
+
 }

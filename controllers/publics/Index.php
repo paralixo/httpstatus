@@ -21,10 +21,9 @@ class Index extends \Controller
 		foreach ($content->websites as $key => $website) {
 			$status = file_get_contents("http://localhost:8080/httpstatus/api/status/" . $website->id);
 			$status = json_decode($status);
-			$website->status = $status->status;
-			array_push($website, $status->status);
+			$website->status = $status->status->code;
 		}
-		
+
 		$is_log = isset($_SESSION['api_key']) ? true : false;
 		$api_key = $is_log ? $_SESSION['api_key'] : null;
 
@@ -64,5 +63,13 @@ class Index extends \Controller
 
 		header('Location: /httpstatus');
   		exit();
+	}
+
+	public function modify(string $id)
+	{
+		session_start();
+		$api_key = isset($_SESSION['api_key']) ? $_SESSION['api_key'] : false;
+		$website = $this->internal_index->modify(intval($id));
+		return $this->render("index/modify", ['url' => $website['url'], 'id' => $website['id'], 'api_key' => $api_key]);
 	}
 }

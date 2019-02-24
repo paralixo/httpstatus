@@ -34,4 +34,9 @@ class Websites extends \Model
 	{
 		return $this->get('history', ['id_website' => $id], 'update_time', true);
 	}
+
+	public function update_val (int $id, string $url)
+	{
+		return $this->update('websites', ['url' => $url], ['id' => $id]);
+	}
 }
