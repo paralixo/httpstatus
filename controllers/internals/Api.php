@@ -98,4 +98,15 @@ class Api extends \InternalController
 		$output['status'] = $status;
 		return $output;
 	}
+
+	public function update(int $id, string $url)
+	{
+		$update = $this->model_websites->update_val($id, $url);
+
+		$output = array();
+		$output['success'] = $update == 1 ? true : false;
+		$output['id'] = $id;
+
+		return $output;
+	}
 }

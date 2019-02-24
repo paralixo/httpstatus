@@ -16,4 +16,9 @@ class Index extends \InternalController
 	{
 		return $this->model_users->get_one_by_email($email, $pwd);
 	}
+
+	public function modify (int $id)
+	{
+		return $this->model_websites->get_one_by_id(intval($id));
+	}
 }
