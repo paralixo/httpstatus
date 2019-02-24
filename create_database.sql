@@ -18,8 +18,7 @@ CREATE TABLE history (
 	id_history int primary key not null auto_increment,
 	id_website int not null,
 	status int not null,
-	update_time datetime not null,
-	CONSTRAINT FK_WebsiteHistory FOREIGN KEY (id_website) REFERENCES websites(id)
+	update_time datetime not null
 );
 
 INSERT INTO users (email, password, is_admin, api_key) VALUES ('deschaussettes@yopmail.com', 'password', true, 'abcdefghjaimelesapis');
