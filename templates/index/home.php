@@ -1,8 +1,14 @@
 <?php \controllers\internals\Incs::head('It Works !'); ?>
 
+<h1>Accueil</h1>
+
 <?php if (!$is_log) : ?>
+	
 	<form method="POST" action="login">
+		<h2>Connexion</h2>
+		<label for="email">Email</label>
 		<input name="email" type="email" id="email" placeholder="Email..." />
+		<label for="password">Password</label>
 		<input name="password" type="password" id="password" placeholder="password..." />
 		<input type="submit" value="Connexion" />
 	</form>

@@ -1,6 +1,7 @@
 <?php \controllers\internals\Incs::head('It Works !'); ?>
 
 <h1>Ajouter un site</h1>
+<a href="/httpstatus/">Retour</a>
 <form method="POST" action="/httpstatus/api/add?api_key=<?= $api_key ?>">
 	<label for="url">Url: </label>
 	<input id="url" name="url" type="text" placeholder="url..." />

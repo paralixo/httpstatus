@@ -9,17 +9,18 @@ class Index extends \Controller
 	{
 		parent::__construct($pdo);
 		$this->internal_index = new InternalIndex($pdo);
+		$this->port = "80";
 	}
 
 	public function home()
 	{
 		session_start();
 
-		$content = file_get_contents("http://localhost:8080/httpstatus/api/list");
+		$content = file_get_contents("http://localhost:" . $this->port . "/httpstatus/api/list");
 		$content = json_decode($content);
 
 		foreach ($content->websites as $key => $website) {
-			$status = file_get_contents("http://localhost:8080/httpstatus/api/status/" . $website->id);
+			$status = file_get_contents("http://localhost:" . $this->port . "/httpstatus/api/status/" . $website->id);
 			$status = json_decode($status);
 			$website->status = $status->status->code;
 		}
@@ -69,7 +70,17 @@ class Index extends \Controller
 	{
 		session_start();
 		$api_key = isset($_SESSION['api_key']) ? $_SESSION['api_key'] : false;
-		$website = $this->internal_index->modify(intval($id));
+		$website = $this->internal_index->get_one(intval($id));
 		return $this->render("index/modify", ['url' => $website['url'], 'id' => $website['id'], 'api_key' => $api_key]);
+	}
+
+	public function history(string $id)
+	{
+		$history = file_get_contents("http://localhost:" . $this->port . "/httpstatus/api/history/" . $id);
+		$history = json_decode($history);
+
+		$website = $this->internal_index->get_one(intval($id));
+
+		return $this->render("index/history", ['history' => $history, 'website' => $website]);
 	}
 }

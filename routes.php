@@ -6,7 +6,8 @@
 			'add' => '/add/',
 			'login' => '/login/',
 			'logout' => '/logout/',
-            'modify' => '/modify/{id}/'
+            'modify' => '/modify/{id}/',
+            'history' => '/history/{id}/'
         ],
         'Api' => [
         	'home' => '/api/',
